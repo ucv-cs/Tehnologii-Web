@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT inscriere (candidat,obiectiv,optiuni)>
+<!ATTLIST inscriere id CDATA #REQUIRED>
+<!ATTLIST inscriere data CDATA #REQUIRED>
+<!ELEMENT candidat (nume,prenume,sex,cetatenie,cnp,etnie,stare-civila,
+                    domiciliu,contact,rezultate-bacalaureat,mentiuni)>
+<!ELEMENT obiectiv (prioritate)+>
+<!ELEMENT optiuni (cazare,limba-straina+,modul-psihopedagogic)>
+<!ELEMENT nume (#PCDATA)>
+<!ELEMENT prenume (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ELEMENT cetatenie (#PCDATA)>
+<!ELEMENT cnp (#PCDATA)>
+<!ELEMENT etnie (#PCDATA)>
+<!ELEMENT stare-civila (#PCDATA)>
+<!ELEMENT domiciliu (tara,regiune,localitate,adresa)>
+<!ELEMENT contact (email,telefon)>
+<!ELEMENT rezultate-bacalaureat (disciplina)+>
+<!ATTLIST rezultate-bacalaureat medie CDATA #REQUIRED>
+<!ELEMENT mentiuni (#PCDATA)>
+<!ELEMENT prioritate (facultate,specializare,forma-scolarizare,
+                      frecventa)>
+<!ATTLIST prioritate ordin (1|2) #REQUIRED>
+<!ELEMENT cazare (#PCDATA)>
+<!ELEMENT limba-straina (#PCDATA)>
+<!ATTLIST limba-straina prioritate (1|2) #REQUIRED>
+<!ELEMENT modul-psihopedagogic (#PCDATA)>
+<!ELEMENT tara (#PCDATA)>
+<!ELEMENT regiune (#PCDATA)>
+<!ELEMENT localitate (#PCDATA)>
+<!ELEMENT adresa (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT telefon (#PCDATA)>
+<!ELEMENT disciplina (#PCDATA)>
+<!ATTLIST disciplina denumire CDATA #REQUIRED>
+<!ELEMENT facultate (#PCDATA)>
+<!ELEMENT specializare (#PCDATA)>
+<!ELEMENT forma-scolarizare (#PCDATA)>
+<!ELEMENT frecventa (#PCDATA)>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="inscriere">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="candidat" />
+				<xs:element ref="obiectiv" />
+				<xs:element ref="optiuni" />
+			</xs:sequence>
+			<xs:attribute name="data" use="required" type="xs:date" />
+			<xs:attribute name="id" use="required" type="xs:positiveInteger" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="candidat">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nume" />
+				<xs:element ref="prenume" />
+				<xs:element ref="sex" />
+				<xs:element ref="cetatenie" />
+				<xs:element ref="cnp" />
+				<xs:element ref="etnie" />
+				<xs:element ref="stare-civila" />
+				<xs:element ref="domiciliu" />
+				<xs:element ref="contact" />
+				<xs:element ref="rezultate-bacalaureat" />
+				<xs:element ref="mentiuni" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="nume" type="xs:string" />
+
+	<xs:element name="prenume" type="xs:string" />
+
+	<xs:element name="sex">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="masculin" />
+				<xs:enumeration value="feminin" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="cetatenie">
+		<xs:simpleType>
+			<!-- pot fi adăugate toate cetățeniile posibile -->
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="română" />
+				<xs:enumeration value="moldovenească" />
+				<xs:enumeration value="italiană" />
+				<xs:enumeration value="sârbă" />
+				<xs:enumeration value="bulgară" />
+				<xs:enumeration value="ungară" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="cnp">
+		<xs:simpleType>
+			<!-- validează, în scop demonstrativ, doar dimensiunea unui CNP românesc; 
+        pentru alte țări acest număr poate varia -->
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-9]{13}" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="etnie">
+		<xs:simpleType>
+			<!-- pot fi adăugate toate etniile posibile -->
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="română" />
+				<xs:enumeration value="maghiară" />
+				<xs:enumeration value="romă" />
+				<xs:enumeration value="sârbă" />
+				<xs:enumeration value="bulgară" />
+				<xs:enumeration value="italiană" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="stare-civila" type="xs:string" />
+
+	<xs:element name="domiciliu">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tara" />
+				<xs:element ref="regiune" />
+				<xs:element ref="localitate" />
+				<xs:element ref="adresa" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="tara">
+		<xs:simpleType>
+			<!-- pot fi adăugate toate țările posibile -->
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="România" />
+				<xs:enumeration value="Moldova" />
+				<xs:enumeration value="Italia" />
+				<xs:enumeration value="Serbia" />
+				<xs:enumeration value="Bulgaria" />
+				<xs:enumeration value="Ungaria" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<!-- nu toate țările sunt împărțite în județe, 
+    așa că am folosit o categorie mai generală, aceea de regiune -->
+	<xs:element name="regiune" type="xs:string" />
+
+	<xs:element name="localitate" type="xs:string" />
+
+	<xs:element name="adresa" type="xs:string" />
+
+	<xs:element name="contact">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="email" />
+				<xs:element ref="telefon" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="email">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<!-- format simplist de email: (cel puțin un caracter diferit de @) 
+					@ (cel puțin un caracter diferit de .) 
+					. (cel puțin un caracter diferit de .) -->
+				<xs:pattern value="[^@]+@[^\.]+\.[^\.]+" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="telefon" type="xs:string" />
+
+	<xs:element name="rezultate-bacalaureat">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="2" maxOccurs="2" ref="disciplina" />
+			</xs:sequence>
+			<xs:attribute name="medie" use="required" type="nota" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="disciplina">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="nota">
+					<xs:attribute name="denumire" use="required" type="xs:string" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="mentiuni" type="xs:string" />
+
+	<xs:element name="obiectiv">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="2" maxOccurs="2" ref="prioritate" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="prioritate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="facultate" />
+				<xs:element ref="specializare" />
+				<xs:element ref="forma-scolarizare" />
+				<xs:element ref="frecventa" />
+			</xs:sequence>
+			<xs:attribute name="ordin" use="required" type="ordin" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- mai corect ar fi fost:  
+    facultate A -> specialzare {a, b, c}; facultate B -> specializare {d, e} etc.;
+    ar fi realizabil în XSD v. 1.1, însă aici este folosită v. 1.0 -->
+	<xs:element name="facultate" type="xs:string" />
+
+	<xs:element name="specializare" type="xs:string" />
+
+	<xs:element name="forma-scolarizare">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="buget" />
+				<xs:enumeration value="taxă" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="frecventa">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="cu frecvență" />
+				<xs:enumeration value="învățământ la distanță" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+
+	<xs:element name="optiuni">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cazare" />
+				<xs:element minOccurs="2" maxOccurs="2" ref="limba-straina" />
+				<xs:element ref="modul-psihopedagogic" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="cazare" type="da-nu" />
+
+	<xs:element name="limba-straina">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="prioritate" use="required" type="ordin" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="modul-psihopedagogic" type="da-nu" />
+
+	<!-- restricții reutilizabile -->
+	<xs:simpleType name="nota">
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0" />
+			<xs:maxInclusive value="10" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="da-nu">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="da" />
+			<xs:enumeration value="nu" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ordin">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="1" />
+			<xs:enumeration value="2" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE inscriere SYSTEM "inscriere.dtd">
+<inscriere id="12" data="2021-05-16">
+	<candidat>
+		<nume>Petrescu</nume>
+		<prenume>George</prenume>
+		<sex>masculin</sex>
+		<cetatenie>română</cetatenie>
+		<cnp>1900212165790</cnp>
+		<etnie>română</etnie>
+		<stare-civila>căsătorit</stare-civila>
+		<domiciliu>
+			<tara>Italia</tara>
+			<regiune>Toscana</regiune>
+			<localitate>Asciano</localitate>
+			<adresa>7FC9+JF Asciano</adresa>
+		</domiciliu>
+		<contact>
+			<email>george.petrescu@gmail.com</email>
+			<telefon>0721234765</telefon>
+		</contact>
+		<rezultate-bacalaureat medie="9.50">
+			<disciplina denumire="limba și literatura română">10</disciplina>
+			<disciplina denumire="matematică">10</disciplina>
+		</rezultate-bacalaureat>
+		<mentiuni />
+	</candidat>
+	<obiectiv>
+		<prioritate ordin="1">
+			<facultate>științe economice</facultate>
+			<specializare>contabilitate</specializare>
+			<forma-scolarizare>buget</forma-scolarizare>
+			<frecventa>învățământ la distanță</frecventa>
+		</prioritate>
+		<prioritate ordin="2">
+			<facultate>științe</facultate>
+			<specializare>informatică</specializare>
+			<forma-scolarizare>taxă</forma-scolarizare>
+			<frecventa>cu frecvență</frecventa>
+		</prioritate>
+	</obiectiv>
+	<optiuni>
+		<cazare>da</cazare>
+		<limba-straina prioritate="1">engleză</limba-straina>
+		<limba-straina prioritate="2">italiană</limba-straina>
+		<modul-psihopedagogic>nu</modul-psihopedagogic>
+	</optiuni>
+</inscriere>
